@@ -1,5 +1,4 @@
 'use client'
-import type { Metadata } from 'next'
 import ThemeToggle from './components/ThemeToggle'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './globals.css'

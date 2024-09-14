@@ -1,6 +1,8 @@
 'use client'
 import Home from './home/page'
 
-export default () => (
+const Index = () => (
     <Home />
 )
+
+export default Index
