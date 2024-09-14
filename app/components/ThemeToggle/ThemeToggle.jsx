@@ -1,10 +1,17 @@
 'use client'
-import { useState, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 const ThemeToggle = () => {
     
-    const [mode, setMode] = useState(localStorage.getItem('post-wall.mode') ?? 'light')
-    const [theme, setTheme] = useState(localStorage.getItem('post-wall.theme') ?? 'garden')
+    const [mode, setMode] = useState('light')
+    const [theme, setTheme] = useState('garden')
+    
+    useEffect(() => {
+        
+        setMode(localStorage.getItem('post-wall.mode') ?? 'light')
+        setTheme(localStorage.getItem('post-wall.theme') ?? 'garden')
+        
+    }, [])
     
     const toggleTheme = useCallback(() => {
         
