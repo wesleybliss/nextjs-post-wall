@@ -1,6 +1,8 @@
 import { apiKey } from '../../constants'
 import cache from '../../cache'
 
+const MAX_HISTORY = 100
+
 export default async function getHistory(req, res) {
     
     try {
@@ -12,6 +14,12 @@ export default async function getHistory(req, res) {
             return res.status(401).json({ error: 'Unauthorized' })
         
         const data = cache.read()
+        
+        if (data?.posts?.length > MAX_HISTORY)
+            cache.update(prev => ({
+                ...prev,
+                posts: prev.posts.slice(0, MAX_HISTORY),
+            }))
         
         return res.json(data?.posts || [])
         

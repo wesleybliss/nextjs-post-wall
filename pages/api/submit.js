@@ -28,8 +28,8 @@ export default async function postSubmit(req, res) {
         cache.update(data => ({
             ...data,
             posts: [
-                ...(data.posts || []),
                 newPost,
+                ...(data.posts || []),
             ],
         }))
         
