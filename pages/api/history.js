@@ -13,7 +13,7 @@ export default async function getHistory(req, res) {
         
         const data = cache.read()
         
-        return res.json(data)
+        return res.json(data?.posts || [])
         
     } catch (e) {
         

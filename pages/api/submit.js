@@ -1,5 +1,6 @@
 import { apiKey } from '../../constants'
 import cache from '../../cache'
+import { nanoid } from 'nanoid'
 
 export default async function postSubmit(req, res) {
     
@@ -16,17 +17,23 @@ export default async function postSubmit(req, res) {
         if (!text?.length)
             return res.status(422).json({ error: 'No text provided' })
         
-        console.log('api/submit:', data)
+        console.log('api/submit:', text)
+        
+        const newPost = {
+            id: nanoid(),
+            text,
+            createdAt: new Date().toISOString(),
+        }
         
         cache.update(data => ({
             ...data,
             posts: [
-                ...data.posts,
-                { text, createdAt: new Date().toISOString() },
+                ...(data.posts || []),
+                newPost,
             ],
         }))
         
-        return res.json({ message: 'Data received successfully', data })
+        return res.json({ message: 'Ok' }) 
         
     } catch (e) {
         

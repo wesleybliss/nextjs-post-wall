@@ -7,23 +7,24 @@ const HomeViewModel = () => {
     
     const canSubmit = useMemo(() => text.length > 0, [text])
     
-    const handleSubmit = useCallback(async e => {
+    const handleSubmit = useCallback(async () => {
         
         if (!canSubmit)
             return
         
         try {
             
-            const res = await request('/api/submit', 'post', {
+            const res = await request('submit', 'post', {
                 text,
             })
             
             if (res.ok) {
                 const responseData = await res.json()
                 console.log(responseData)
+                setText('')
             } else {
                 const error = await res.json()
-                console.error('Error:', error.error)
+                throw new Error(error.error)
             }
             
         } catch (e) {

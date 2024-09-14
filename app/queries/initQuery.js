@@ -14,7 +14,7 @@ const useInitQuery = () => useQuery({
         if (data.error)
             throw new Error(data.error)
 
-        console.log('init data:', res.status, data)
+        // console.log('init data:', res.status, data)
 
         return data
 

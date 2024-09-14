@@ -5,13 +5,14 @@ const PostForm = ({
     
     return (
         
-        <form className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4">
             
             <input
                 className="input input-bordered"
                 type="text"
                 placeholder=""
                 value={vm.text}
+                onKeyUp={e => e.key === 'Enter' && vm.handleSubmit()}
                 onChange={e => vm.setText(e.target.value)}
             />
             
@@ -22,7 +23,7 @@ const PostForm = ({
                 SUBMIT
             </button>
             
-        </form>
+        </div>
         
     )
     
