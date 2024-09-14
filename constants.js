@@ -1,2 +1,2 @@
 
-export const apiKey = 'UDljaFVOKUxbSGRvPVMlLTomIGVOZ0FsPSYgeXNvICZgeVQK'
+export const apiKey = process.env.API_KEY
